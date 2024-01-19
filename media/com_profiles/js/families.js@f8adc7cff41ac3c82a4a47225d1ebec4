@@ -1,0 +1,1 @@
+jQuery(document).ready((function($){new InfiniteScroll("#infinite",{hideNav:".pagination",path:function(){var start=12*(this.loadCount+1);return console.log(6,start,this.loadCount),"/index.php?option=com_profiles&view=families&format=json&type=infinitescroll&limitstart="+start},append:".item",history:!1,status:".page-load-status"})}));
