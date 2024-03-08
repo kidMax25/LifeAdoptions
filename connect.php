@@ -38,17 +38,17 @@
     }
 
 
-    if (isset($_POST['birthparent-form2'])){
+    if (isset($_POST['form[Submit2]'])){
         //validate inputs and check if fields are filled using php
         $uuid = generateUniqueUUID($length = 9, $con);
-        $First_Name = filter_input(INPUT_POST, 'form[First Name]', FILTER_SANITIZE_STRING);
-        $Last_Name = filter_input(INPUT_POST, 'form[Last Name]', FILTER_SANITIZE_STRING);
-        $Pronouns = filter_input(INPUT_POST, 'form[Preferred Pronoun]', FILTER_SANITIZE_STRING);
-        $Date_of_Birth = filter_input(INPUT_POST, 'form[LEADCF46]', FILTER_SANITIZE_STRING);
-        $Race = filter_input(INPUT_POST, 'form[LEADCF41][0]', FILTER_SANITIZE_STRING);
+        $First_Name = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_STRING);
+        $Last_Name = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_STRING);
+        $Pronouns = filter_input(INPUT_POST, 'pronoun', FILTER_SANITIZE_STRING);
+        $Date_of_Birth = filter_input(INPUT_POST, 'dob', FILTER_SANITIZE_STRING);
+        $Race = filter_input(INPUT_POST, 'race1', FILTER_SANITIZE_STRING);
 
         
-        $stmt1 = $con->prepare("INSERT INTO personal_information (uuid, First Name, Last Name, Pronouns, Date of Birth, Race) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt1 = $con->prepare("INSERT INTO personal_information (uuid, `First Name`, `Last Name`, `Pronouns`, `Date of Birth`, Race) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt1->bind_param("ssssss", $uuid);
         $stmt1->execute();
         $result1 = $stmt1->get_result();
